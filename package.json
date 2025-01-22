@@ -1,0 +1,30 @@
+{
+    "name": "MultiOgarII-Cigar2",
+    "version": "1.6.5",
+    "description": "Combined project of MultiOgarII and Cigar2",
+    "author": "Megabyte918 (https://github.com/Megabyte918)",
+    "homepage": "https://github.com/Megabyte918/MultiOgarII",
+    "license": "Apache-2.0",
+    "main": "src/index.js",
+    "dependencies": {
+      "ws": "^7.4.0",
+      "express": "^4.16.4"
+    },
+    "devDependencies": {
+      "eslint": "^7.12.1"
+    },
+    "scripts": {
+      "start:server": "cd src && node index",
+      "start:client": "node webserver.js"
+    },
+    "repository": {
+      "type": "git",
+      "url": "https://github.com/Megabyte918/MultiOgarII"
+    },
+    "bugs": {
+      "url": "https://github.com/Megabyte918/MultiOgarII/issues"
+    },
+    "engines": {
+      "node": "8.x"
+    }
+  }  
