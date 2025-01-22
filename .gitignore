@@ -1,4 +1,4 @@
-node_modules/
+node_modules
 **/*.log
 package-lock.json
 
@@ -8,14 +8,3 @@ src/ipbanlist.txt
 # Prevent tls keys from being leaked
 keys/cert.pem
 keys/key.pem
-
-# Botname file
-src/ai/botnames.txt
-# Config file
-src/config.js
-
-# Node modules
-node_modules
-
-# Package-lock
-package-lock.json
