@@ -1421,8 +1421,69 @@
                 ctx.stroke();
                 this.s += ctx.lineWidth / 2;
             }
-        }
-        drawText(ctx) {
+            this.drawEyes(ctx);
+        } drawEyes(ctx) {
+
+            const isFood = this.s < 20;
+            const isVirus = this.jagged;
+
+            if (isFood || isVirus) return;
+            
+            const eyeRadius = Math.max(this.s / 4.5, 5);
+            const pupilRadius = eyeRadius / 2.5;
+            const offsetX = this.s / 3;
+            const offsetY = -this.s / 3;
+
+            const leftEyeX = this.x - offsetX;
+            const leftEyeY = this.y + offsetY;
+            const rightEyeX = this.x + offsetX;
+            const rightEyeY = this.y + offsetY;
+
+            const calcPupilOffset = (eyeX, eyeY) => {
+                const dx = mouseX - (mainCanvas.width / 2);
+                const dy = mouseY - (mainCanvas.height / 2);
+                const distance = Math.sqrt(dx * dx + dy * dy) || 1;
+
+                const maxOffset = eyeRadius * 0.4;
+            return {
+                offsetX: (dx / distance) * Math.min(distance, maxOffset),
+                offsetY: (dy / distance) * Math.min(distance, maxOffset),
+            };
+            };
+
+            const drawEye = (eyeX, eyeY) => {
+            const { offsetX: pupilOffsetX, offsetY: pupilOffsetY } = calcPupilOffset(eyeX, eyeY);
+
+            ctx.beginPath();
+            ctx.arc(eyeX, eyeY, eyeRadius, 0, Math.PI * 2);
+            ctx.fillStyle = '#FFFFFF';
+            ctx.fill();
+
+            ctx.beginPath();
+            ctx.arc(eyeX, eyeY, eyeRadius * 0.7, 0, Math.PI * 2);
+            ctx.fillStyle = '#6ECFF6';
+            ctx.fill();
+
+            ctx.beginPath();
+            ctx.arc(eyeX + pupilOffsetX, eyeY + pupilOffsetY, pupilRadius, 0, Math.PI * 2);
+            ctx.fillStyle = '#000000';
+            ctx.fill();
+
+            ctx.beginPath();
+            ctx.arc(
+                eyeX + pupilOffsetX - pupilRadius * 0.3,
+                eyeY + pupilOffsetY - pupilRadius * 0.3,
+                pupilRadius * 0.3,
+                0,
+                Math.PI * 2
+            );
+            ctx.fillStyle = '#FFFFFF';
+            ctx.fill();
+            };
+
+            drawEye(leftEyeX, leftEyeY);
+            drawEye(rightEyeX, rightEyeY);
+        }drawText(ctx) {
             if (this.s < 20 || this.jagged) return;
             if (this.name && settings.showNames) {
                 drawText(ctx, false, this.x, this.y, this.nameSize, this.drawNameSize, this.name);
