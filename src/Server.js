@@ -685,7 +685,7 @@ class Server {
     
         if (chance <= 0.01) { // 1% chance for special food
             cell = new Entity.SpecialFood(this, null, this.randomPos(), this.config.foodMinSize);
-            cell.color = {r: 255, g: 255, b: 255}
+            cell.color = {r: 8, g: 138, b: 8}
         } else {
             cell = new Entity.Food(this, null, this.randomPos(), this.config.foodMinSize);
             cell.color = this.getRandomColor();
