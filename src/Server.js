@@ -680,12 +680,22 @@ class Server {
         this.addNode(cell);
     }
     spawnFood() {
-        var cell = new Entity.Food(this, null, this.randomPos(), this.config.foodMinSize);
-        if (this.config.foodMassGrow) {
-            var maxGrow = this.config.foodMaxSize - cell.radius;
-            cell.setSize(cell.radius += maxGrow * Math.random());
+        const chance = Math.random(); // Generate a random number between 0 and 1
+        let cell;
+    
+        if (chance <= 0.01) { // 1% chance for special food
+            cell = new Entity.SpecialFood(this, null, this.randomPos(), this.config.foodMinSize);
+            cell.color = {r: 255, g: 255, b: 255}
+        } else {
+            cell = new Entity.Food(this, null, this.randomPos(), this.config.foodMinSize);
+            cell.color = this.getRandomColor();
         }
-        cell.color = this.getRandomColor();
+    
+        if (this.config.foodMassGrow) {
+            const maxGrow = this.config.foodMaxSize - cell.radius;
+            cell.setSize(cell.radius + maxGrow * Math.random());
+        }
+    
         this.addNode(cell);
     }
     spawnVirus() {

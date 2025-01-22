@@ -1,3 +1,5 @@
+const SpecialFood = require('./SpecialFood');
+
 module.exports = {
     Cell: require('./Cell'),
     PlayerCell: require('./PlayerCell'),
@@ -5,4 +7,5 @@ module.exports = {
     Virus: require('./Virus'),
     MotherCell: require('./MotherCell'),
     EjectedMass: require('./EjectedMass'),
+    SpecialFood: require('./SpecialFood'),
 };
