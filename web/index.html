@@ -18,9 +18,6 @@
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" rel="stylesheet">
     <link href="assets/css/index.css" rel="stylesheet">
     <link href="assets/css/gallery.css" rel="stylesheet">
-
-    <script src="assets/js/quadtree.js"></script>
-    <script src="assets/js/main_out.js"></script>
 </head>
 
 <body>
@@ -105,8 +102,24 @@
         <img src="/assets/img/eject.png" id="ejectBtn">
     </div>
 
+    <button id="exitBtn" class="btn btn-warning buttonExit" style="display: none;">Exit Game</button>
+
+        <!-- Modal for exit confirmation -->
+    <div id="exitModal" class="modal">
+        <div class="modal-content">
+            <h4>Exit the Game</h4>
+            <p>You have 10 seconds to confirm your exit.</p>
+            <div id="countdown" class="countdown">10</div>
+            <button id="confirmExit" class="btn btn-danger">Exit</button>
+            <button id="cancelExit" class="btn btn-secondary">Cancel</button>
+        </div>
+    </div>
+
     <canvas id="canvas" width="800" height="600"></canvas>
     <input type="text" id="chat_textbox" placeholder="Press enter to chat" maxlength="200">
     <div style="font-family:'Ubuntu'">&nbsp;</div>
 </body>
+
+<script src="assets/js/quadtree.js"></script>
+<script src="assets/js/main_out.js"></script>
 </html>

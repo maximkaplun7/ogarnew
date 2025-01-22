@@ -151,3 +151,50 @@ input[type=checkbox] {
     margin-right: 10px;
     user-select: none;
 }
+
+#exitModal {
+    position: fixed;
+    left: 50%;
+    transform: translateX(-50%);
+    height: 20%;
+    background-color: rgba(0, 0, 0, 0.3);
+    padding: 20px;
+    border-radius: 5px;
+    display: none;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    z-index: 1000;
+    pointer-events: none;
+}
+
+.modal-content {
+    text-align: center;
+    background-color: rgba(0, 0, 0, 0.3);
+    color: #fff;
+}
+
+.modal-content button {
+    pointer-events: auto;
+}
+
+#countdown {
+    font-size: 2em;
+    margin-top: 10px;
+    font-weight: bold;
+    color: #ff0000;
+}
+
+#cancelExit {
+    border: transparent;
+    background-color: yellowgreen;
+}
+
+.buttonExit {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    opacity: 0.5;
+}
+
+.buttonExit:hover {
+    opacity: 1;
+}

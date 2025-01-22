@@ -1747,4 +1747,52 @@
         byId('gallery').show(0.5);
     };
     window.addEventListener('DOMContentLoaded', init);
+
+    let exitModal = document.getElementById('exitModal');
+    let playBtn = document.getElementById('play-btn');
+    let countdownElem = document.getElementById('countdown');
+    let confirmExitBtn = document.getElementById('confirmExit');
+    let cancelExitBtn = document.getElementById('cancelExit');
+    let countdownTimer;
+    let countdownValue = 10;
+
+    playBtn.addEventListener('click', function() {
+        exitBtn.style.display = 'block';
+    });
+
+
+    function showExitModal() {
+        exitModal.style.display = 'block';
+        exitBtn.style.display = 'none';
+        countdownValue = 10;
+        countdownElem.textContent = countdownValue;
+        
+
+        countdownTimer = setInterval(function() {
+            countdownValue--;
+            countdownElem.textContent = countdownValue;
+            
+            if (countdownValue <= 0) {
+                clearInterval(countdownTimer);
+                location.reload();
+            }
+        }, 1000);
+    }
+
+    function cancelExit() {
+        clearInterval(countdownTimer);
+        exitModal.style.display = 'none';
+        exitBtn.style.display = 'block';
+    }
+
+    document.getElementById('exitBtn').addEventListener('click', function() {
+        showExitModal();
+    });
+
+    confirmExitBtn.addEventListener('click', function() {
+        clearInterval(countdownTimer);
+        location.reload();
+    });
+
+    cancelExitBtn.addEventListener('click', cancelExit);
 })();
